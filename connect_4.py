@@ -121,9 +121,10 @@ class State:
         return not self.get_valid_actions().any() or self.get_winner() is not None
 
     def get_score(self):
-        if self.player_won(0):
+        winner = self.get_winner()
+        if winner == self.current_player:
             return 1
-        elif self.player_won(1):
+        elif winner is not None:
             return -1
         elif not self.get_valid_actions().any():
             return 0

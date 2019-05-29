@@ -6,7 +6,7 @@ import connect_4
 
 class TestInitialState(unittest.TestCase):
     def setUp(self) -> None:
-        self.state = connect_4.connect_4.State()
+        self.state = connect_4.State()
 
     def test_print(self):
         print(self.state)
@@ -17,6 +17,7 @@ class TestInitialState(unittest.TestCase):
                 random_action = random.randrange(7)
             self.state.take_action(random_action)
             print(self.state)
+        print(f'Winner: {self.state.get_winner()}')
 
 
 if __name__ == '__main__':
