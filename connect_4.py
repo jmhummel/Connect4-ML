@@ -122,7 +122,7 @@ class State:
 
     def get_score(self):
         winner = self.get_winner()
-        if winner == self.current_player:
+        if winner == 0:
             return 1
         elif winner is not None:
             return -1
@@ -153,5 +153,11 @@ class State:
                     s += '⚪'
             s += '\n'
         return s
+
+    def __eq__(self, other):
+        return np.array_equal(self.board, other.board) and self.current_player == other.current_player
+
+    def __hash__(self):
+        return hash((self.board.tostring(), self.current_player))
 
 # http://mcts.ai/code/python.html
