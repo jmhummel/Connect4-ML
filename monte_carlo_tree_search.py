@@ -3,6 +3,7 @@ import numpy as np
 
 c_puct = 1
 
+
 class Node:
     def __init__(self, p: float, siblings: dict):
         self.N = 0
@@ -23,5 +24,6 @@ class MCTS:
         prior = 1/len(actions)
         for a in actions:
             self.children[a] = Node(prior, self.children)
+        chosen = max((child.Q + child.u(), a) for a, child in self.children.items())
 
 
